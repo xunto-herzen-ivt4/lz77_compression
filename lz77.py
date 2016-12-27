@@ -38,5 +38,6 @@ def compress(message, buffer_size=4, dictionary_size=12):
 def decompress(compressed_message):
     message = ""
     for part in compressed_message:
-        message = message + message[-part[0]:][:part[1]] + part[2]
+        shift, size, character = part
+        message = message + message[-shift:][:size] + character
     return message
